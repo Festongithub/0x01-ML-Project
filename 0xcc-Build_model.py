@@ -31,46 +31,45 @@ class NeuralNetwork(nn.Module):
         logits = self.linear_relu_stack(x)
         return logits
 
-model = NeuralNetwork().to(device)
+model = NeuralNetwork()
 print(model)
 
+#x = torch.rand(1, 28, 28, device=device)
+#logits = model(x)
+#pred_probab = nn.Softmax(dim=1)(logits)
+#y_pred =pred_probab.argmax(1)
+#print("Predicted class:{}".format(y_pred))
 
-x = torch.rand(1, 28, 28, device=device)
-logits = model(x)
-pred_probab = nn.Softmax(dim=1)(logits)
-y_pred =pred_probab.argmax(1)
-print("Predicted class:{}".format(y_pred))
-
-input_image = torch.rand(3, 28, 28)
-print(input_image.size())
+#input_image = torch.rand(3, 28, 28)
+#print(input_image.size())
 
 
 #flatten the image
-flatten = nn.Flatten()
-flat_image = flatten(input_image)
-print(flat_image.size())
+#flatten = nn.Flatten()
+#flat_image = flatten(input_image)
+#print(flat_image.size())
 
 #nn.Linear linear layer is a module that applies a linear transformation on the inputs using its stored wieghts
 
-layer1 = nn.Linear(in_features=28*28, out_features=20)
-hidden1 = layer1(flat_image)
-print(hidden1.size())
+#layer1 = nn.Linear(in_features=28*28, out_features=20)
+#hidden1 = layer1(flat_image)
+#print(hidden1.size())
 
 #nn.Relu
-print("Before Relu: {}".format(hidden1))
-hidden1 = nn.ReLU()(hidden1)
-print("After Relu: {}".format(hidden1))
+#print("Before Relu: {}".format(hidden1))
+#hidden1 = nn.ReLU()(hidden1)
+#print("After Relu: {}".format(hidden1))
 
 #nn.Sequential
-seq_modules = nn.Sequential(flatten, layer1, nn.ReLU(), nn.Linear(20,10))
-input_image = torch.rand(3, 28, 28)
-logits = seq_modules(input_image)
+#seq_modules = nn.Sequential(flatten, layer1, nn.ReLU(), nn.Linear(20,10))
+#input_image = torch.rand(3, 28, 28)
+#logits = seq_modules(input_image)
 
 #nn.SoftMax
-softmax = nn.Softmax(dim=1)
-pred_probab = softmax(logits)
+#softmax = nn.Softmax(dim=1)
+#pred_probab = softmax(logits)
 
-print("Model structure:{}".format(model))
+#print("Model structure:{}".format(model))
 
-for name, param in model.named_parameters():
-    print("Layer:{} | Size: {} | Values: {}".format(name, param.size(), param))
+#for name, param in model.named_parameters():
+    #print("Layer:{} | Size: {} | Values: {}".format(name, param.size(), param)#)
