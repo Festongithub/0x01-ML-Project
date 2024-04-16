@@ -1,0 +1,10 @@
+#!/usr/bin/python3
+
+import torch
+import torchvision.models as models
+
+model = models.vgg16(weights='IMAGENET1K_V1')
+torch.save(model.state.dict(), 'model_weights.pth')
+
+model = models.vgg16()
+model.load_state_dict(torch.l
