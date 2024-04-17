@@ -10,5 +10,3 @@ print("{}".format(first))
 
 row2 = data.iloc[3]
 print(row2)
-
-df.isnull()
